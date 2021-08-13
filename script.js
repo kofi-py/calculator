@@ -1,6 +1,6 @@
 const $input = document.querySelector("input");
 
-document.querySelectorAll(".num__key").forEach(
+document.querySelectorAll(".key-num").forEach(
     el => {
       el.onclick = () => $input.value = $input.value !== "0" ? $input.value + el.innerText : el.innerText;
     }
@@ -57,11 +57,11 @@ const evaluate = buffer => {
 }
 
 for (const opName of [ "add", "subtract", "multiply", "divide", "percent" ]) {
-    document.querySelector(`.op__key[op=${opName}]`).onclick =
+    document.querySelector(`.key-op[op=${opName}]`).onclick =
       opCallback(opName);
-  }
+}
   
-  document.querySelector(".eq__key").onclick =
+  document.querySelector(".key-eq").onclick =
     () => {
       if (buffer && buffer.length) {
         buffer.push({ value: parseFloat($input.value) });
@@ -69,11 +69,11 @@ for (const opName of [ "add", "subtract", "multiply", "divide", "percent" ]) {
       }
     }
   
-  document.querySelector(".op__key[op=clear]").onclick =
+  document.querySelector(".key-op[op=clear]").onclick =
     () => {
       $input.value = 0;
       buffer.length = 0;
     }
   
-  document.querySelector(".op__key[op=negate]").onclick =
+  document.querySelector(".key-op[op=negate]").onclick =
     () => $input.value = -parseFloat($input.value);
